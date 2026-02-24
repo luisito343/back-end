@@ -137,6 +137,22 @@ pnpm test:coverage
 - Mayor cobertura de tests para casos de error y validaciones.
 - Estandarización de respuestas y manejo de errores.
 
+## Swagger / OpenAPI (base inicial)
+
+Se agregó una plantilla inicial en:
+
+- `docs/openapi.yaml`
+
+Esta especificación ya incluye los endpoints actuales.
+
+Swagger UI ya está disponible en:
+
+- `http://localhost:3000/api/docs`
+
+Archivo OpenAPI en crudo:
+
+- `http://localhost:3000/api/docs/openapi.yaml`
+
 ## Notas
 
 - El servidor escucha en el puerto `3000`.
