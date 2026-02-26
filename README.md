@@ -155,5 +155,5 @@ Archivo OpenAPI en crudo:
 
 ## Notas
 
-- El servidor escucha en el puerto `3000`.
+- El servidor escucha en `process.env.PORT` (si no existe, usa `3000`).
 - La conexión a base de datos se omite automáticamente durante tests (`NODE_ENV=test`).
