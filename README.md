@@ -157,3 +157,26 @@ Archivo OpenAPI en crudo:
 
 - El servidor escucha en `process.env.PORT` (si no existe, usa `3000`).
 - La conexión a base de datos se omite automáticamente durante tests (`NODE_ENV=test`).
+
+## Deploy en Render
+
+Este proyecto ya incluye configuración base en `render.yaml`.
+
+### Opción A: Blueprint (recomendado)
+
+1. Sube el repo a GitHub.
+2. En Render, elige **New +** → **Blueprint**.
+3. Selecciona el repositorio y Render detectará `render.yaml`.
+4. Configura los valores de variables sensibles:
+   - `DATA_BASE_URL` (obligatoria)
+   - `FRONT_END_URL` (URL de tu frontend)
+
+### Opción B: Web Service manual
+
+- **Build Command:** `pnpm install --frozen-lockfile && pnpm build`
+- **Start Command:** `pnpm start`
+- **Health Check Path:** `/api/`
+- **Environment:**
+  - `NODE_ENV=production`
+  - `DATA_BASE_URL=...`
+  - `FRONT_END_URL=...`

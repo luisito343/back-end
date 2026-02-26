@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: administrador-productos-backend
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: pnpm install --frozen-lockfile && pnpm build
+    startCommand: pnpm start
+    healthCheckPath: /api/
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_BASE_URL
+        sync: false
+      - key: FRONT_END_URL
+        sync: false
