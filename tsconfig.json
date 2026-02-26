@@ -38,5 +38,6 @@
     "emitDecoratorMetadata": true,
     "target": "ES2022",
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.test.ts"]
 }
