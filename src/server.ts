@@ -5,6 +5,9 @@ import swaggerUi from 'swagger-ui-express';
 import yaml from 'js-yaml';
 import fs from 'node:fs';
 import path from 'node:path';
+import type { CorsOptions } from 'cors';
+import cors from 'cors';
+import morgan from 'morgan';
 
 
 
@@ -22,11 +25,19 @@ if (process.env.NODE_ENV !== 'test') {
     connectDB();
 }
 const server: Application = express();
+const corsOptions: CorsOptions = {
+    origin: process.env.FRONT_END_URL || 'http://localhost:5173',
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type',
+}
+
+server.use(cors(corsOptions));
 
 const openApiPath = path.resolve(process.cwd(), 'docs', 'openapi.yaml');
 const openApiDocument = yaml.load(fs.readFileSync(openApiPath, 'utf8')) as object;
 
 server.use(express.json());
+server.use(morgan('dev'));
 server.get('/api/docs/openapi.yaml', (_req, res) => {
     res.sendFile(openApiPath);
 });
